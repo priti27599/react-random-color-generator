@@ -1,39 +1,44 @@
-import React,{useState} from "react";
-import "./style.css";
+import React, { useState } from 'react';
+import './style.css';
 
 export default function App() {
   return (
     <div>
-      <h2>Color Generator</h2>
-      <Generator/>
+      <h2 style={{ textAlign: 'center' }}>Color Generator</h2>
+      <Generator />
     </div>
   );
 }
 
-const Generator = () =>{
-  const intColor = ['#a16945','#ee9bff','#4ca29a'];
-  const [color, setColor]= useState(intColor)
+const Generator = () => {
+  const [color, setColor] = useState('');
 
-  function colorGenrate(){
+  function colorGenrate() {
     let str = '0123456789abcedef';
-    let col ='';
-    for(let i=0; i<6; i++)
-    {
-      let index = Math.floor(Math.random()*str.length);
-      col+=str[index];
+    let col = '';
+    for (let i = 0; i < 6; i++) {
+      let index = Math.floor(Math.random() * str.length);
+      col += str[index];
     }
-    setColor('#'+col);
+    setColor('#' + col);
   }
 
-  const pageStyle={
+  const pageStyle = {
     backgroundColor: `${color}`,
-    height: "60px"
-  }
+    height: '60px',
+    textAlign: 'center',
+    padding: '10px',
+    color: '#fff',
+  };
 
-  return(
-    <div >
-    <button onClick={colorGenrate}>genrate</button>
-    <div style={pageStyle}>{color}</div>
+  return (
+    <div>
+      <div className="btn1">
+        <button onClick={colorGenrate} className="btn">
+          genrate
+        </button>
+      </div>
+      <div style={pageStyle}>{color}</div>
     </div>
-  )
-}
+  );
+};
